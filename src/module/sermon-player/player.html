@@ -1,0 +1,17 @@
+<template>
+    <h5 style="margin-bottom:3px;">
+        <div class="pull-left" style="width:30%;">${state}</div>
+        <div class="pull-right text-right" style="width:70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${currentTrack.artist +' - '+ currentTrack.title}</div>
+        <div style="clear:both;"></div>
+    </h5>
+    <audio style="width:100%;" controls id="audio-player">
+        <source repeat.for="track of tracks" src.bind='track.uri' />
+    </audio>
+    <input type="text" class="form-control" value.bind="filter" placeholder="search track" style="margin-bottom:5px;" /> 
+    <div class="list-group">
+        <a repeat.for="track of tracks | filter: filter" class="list-group-item" click.delegate="play(track)">
+            <div style="width:80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${track.no + '. ' + track.artist +' - '+ track.title}</div>
+            <div class="text-right" style="position:absolute; right:5px; top:25%; width:15%;">${track.length}</div>
+        </a>
+    </div>
+</template>

@@ -1,0 +1,19 @@
+<template>
+    <!--<require from='./style.css'></require>-->
+    <require from='./player'></require>
+    <div style="margin:5px;">
+        <div class="row">
+            <div class="col-xs-12  col-md-4 col-md-offset-4">
+                <h3>sermons</h3>
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="btn-group" role="group" repeat.for="artist of artists">
+                        <button type="button" class="btn btn-default" click.delegate="setArtist(artist.value)">${artist.label}</button>
+                    </div>
+                </div>
+                <br/>
+
+                <player tracks.bind="filteredTracks"></player>
+            </div>
+        </div>
+    </div>
+</template>
