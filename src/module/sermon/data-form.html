@@ -1,10 +1,13 @@
 <template>
-    <form class="form-horizontal">
-        <textbox    label="Code"    value.bind="data.code"      error.bind="error.code"     read-only.bind="(readOnly || isEdit)"></textbox>
-        <textbox    label="Nama"    value.bind="data.name"      error.bind="error.name"     read-only.bind="readOnly"></textbox>
-        <multiline  label="Alamat"  value.bind="data.address"   error.bind="error.address"  read-only.bind="readOnly"></multiline>
-        <dropdown   label="Negara"  value.bind="data.country"   error.bind="error.country"  read-only.bind="readOnly"   items.bind="countries"></dropdown>
-        <textbox    label="Kontak"  value.bind="data.contact"   error.bind="error.contact"  read-only.bind="readOnly"></textbox>
-        <numeric    label="Tempo"   value.bind="data.tempo"     error.bind="error.tempo"    read-only.bind="readOnly"></numeric>
-    </form>
+	<form class="form-horizontal">
+		<textbox label="ID" value.bind="data._id" error.bind="error._id" read-only.bind="true"></textbox>
+		<textbox label="Artist" value.bind="data.artist" error.bind="error.artist" read-only.bind="readOnly"></textbox>
+		<textbox label="Title" value.bind="data.title" error.bind="error.title" read-only.bind="readOnly "></textbox>
+		<numeric label="Duration" value.bind="data.duration" error.bind="error.duration" read-only.bind="readOnly"></numeric>
+		<numeric label="Month" value.bind="data.month" error.bind="error.month" read-only.bind="readOnly"></numeric>
+		<numeric label="Year" value.bind="data.year" error.bind="error.year" read-only.bind="readOnly"></numeric>
+		<multiline label="Description" value.bind="data.description" error.bind="error.description" read-only.bind="readOnly"></multiline>
+		<multiline label="Tags" value.bind="data.tags" error.bind="error.tags" read-only.bind="readOnly"></multiline>
+		<textbox label="Uri" value.bind="data.uri" error.bind="error.uri" read-only.bind="readOnly"></textbox>
+	</form>
 </template>

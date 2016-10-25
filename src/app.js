@@ -2,10 +2,8 @@ export class App {
   configureRouter(config, router) {
     config.title = 'Aurelia';
     config.map([
-      { route: ['', 'welcome'], name: 'welcome',      moduleId: './welcome',      nav: true, title: 'Welcome' },
-      { route: 'users',         name: 'users',        moduleId: './users',        nav: true, title: 'Github Users' },
-      { route: 'sermons',       name: 'sermons',      moduleId: './module/sermon-player/index',        nav: true, title: 'Sermons' },
-      { route: 'child-router',  name: 'child-router', moduleId: './child-router', nav: true, title: 'Child Router' }
+      { route: ['', 'sermons'], name: 'sermon-player',  moduleId: './module/sermon-player/index', nav: true,  title: 'Sermon Player' },
+      { route: 'sermons',       name: 'sermons',        moduleId: './module/sermon/index',        nav: false, title: 'Sermons' }
     ]);
 
     this.router = router;
