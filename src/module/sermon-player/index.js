@@ -4,8 +4,8 @@ import { Service } from './service';
 
 @inject(Element, Service)
 export class Index {
-    queryInfo = {};
-    artists = [{ label: 'All', value: '*' }, { label: 'Ps.Jeffrey', value: 'Jeffrey Rachmat' }, { label: 'Ps. Jose', value: 'Jose Carol' }, { label: 'Other', value: '!' }]
+    queryInfo = { filter: {} };
+    artists = [{ label: 'All', value: null }, { label: 'Ps.Jeffrey', value: 'Jeffrey Rachmat' }, { label: 'Ps. Jose', value: 'Jose Carol' }, { label: 'Other', value: { '$regex': "^(?!.*(Jeffrey Rachmat|Jose Carol)).*$" } }]
     tracks = [];
     filteredTracks = [];
 
@@ -16,9 +16,7 @@ export class Index {
     }
 
     attached() {
-        // this.initPlayer(); 
         this.loadTracks();
-        this.setArtist(this.artist);
     }
 
     loadTracks() {
@@ -26,9 +24,15 @@ export class Index {
             .then(result => {
                 this.tracks = result.data;
             })
-    } 
+    }
 
     setArtist(artist) {
+        this.queryInfo.filter = this.queryInfo.filter || {};
+        if (artist)
+            this.queryInfo.filter.artist = artist;
+        else
+            delete this.queryInfo.filter.artist;
+        // console.log(this.queryInfo);
         // this.artist = artist;
         // var other = '';
         // if (this.artist == '!') {

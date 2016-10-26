@@ -98,7 +98,8 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
-    "react-dynamic-number": "^1.4.4"
+    "react-dynamic-number": "^1.4.4",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "@easy-webpack/config-aurelia": "^2.0.1",

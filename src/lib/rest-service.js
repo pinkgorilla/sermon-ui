@@ -22,7 +22,7 @@ export class RestService {
                     requestError(e) {
                         console.log(e);
                     },
-                    response(response) { 
+                    response(response) {
                         return response;
                     },
                     responseError(e) {
@@ -54,10 +54,15 @@ export class RestService {
         // if (!info.keyword)
         //     delete info.keyword;
 
-        for (var key in info) { 
-            if(info[key])
-                params.push(`${encodeURIComponent(key)}=${encodeURIComponent(info[key])}`)
-        } 
+        for (var key in info) {
+            if (info[key]) {
+                var data = info[key];
+                if (data instanceof Object)
+                    data = JSON.stringify(data);
+                    console.log(data);
+                params.push(`${encodeURIComponent(key)}=${encodeURIComponent(data)}`)
+            }
+        }
 
         var request = {
             method: 'GET',

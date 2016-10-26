@@ -1,19 +1,29 @@
 <template>
-    <!--<require from='./style.css'></require>-->
-    <require from='./player'></require>
-    <div style="margin:5px;">
-        <div class="row">
-            <div class="col-xs-12  col-md-4 col-md-offset-4">
-                <h3>sermons</h3>
-                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                    <div class="btn-group" role="group" repeat.for="artist of artists">
-                        <button type="button" class="btn btn-default" click.delegate="setArtist(artist.value)">${artist.label}</button>
-                    </div>
-                </div>
-                <br/>
+	<!--<require from='./style.css'></require>-->
+	<require from='./player'></require>
+	<div style="margin-top:10px;">
+		<div class="row">
+			<div class="col-xs-12  col-md-4"> 
 
-                <player tracks.bind="tracks"></player>
-            </div>
-        </div>
-    </div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon" id="sizing-keyword">search</span>
+						<input type="text" class="form-control" placeholder="keyword" value.bind="queryInfo.keyword" aria-describedby="sizing-keyword"
+						/>
+					</div>
+				</div>
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<div class="btn-group" role="group" repeat.for="artist of artists">
+						<button type="button" class="btn btn-default" click.delegate="setArtist(artist.value)">${artist.label}</button>
+					</div>
+				</div>
+				<br/>
+				<button type="button" class="btn btn-primary btn-block" click.delegate="loadTracks()">go</button>
+
+			</div>
+			<div class="col-xs-12  col-md-8">
+				<player tracks.bind="tracks"></player>
+			</div>
+		</div>
+	</div>
 </template>
