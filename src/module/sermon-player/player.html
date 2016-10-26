@@ -17,12 +17,12 @@
 				</div>
 
 				<!-- List group -->
-				<ul class="list-group" if.bind="tracks.length > 0">
-					<li repeat.for="track of tracks" class="list-group-item" click.delegate="play(track)">
+				<div class="list-group" if.bind="tracks.length > 0">
+					<a repeat.for="track of tracks" class="list-group-item" click.delegate="play(track)">
 						<div style="width:80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${($index+1) + '. ' + track.artist +' - '+ track.title}</div>
 						<div class="text-right" style="position:absolute; right:5px; top:25%; width:15%;">${track.duration | durationFormat}</div>
-					</li>
-				</ul>
+					</a>
+				</div>
 			</div>
 			<div class="alert alert-info text-center" role="alert" if.bind="tracks.length < 1">We are sorry, it seems that we can't find what you're looking for</div>
 		</div>
