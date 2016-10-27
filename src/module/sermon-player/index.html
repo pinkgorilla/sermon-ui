@@ -3,7 +3,7 @@
 	<require from='./player'></require>
 	<div style="margin-top:10px;">
 		<div class="row">
-			<div class="col-xs-12  col-md-4"> 
+			<div class="col-xs-12  col-md-4">
 
 				<div class="form-group">
 					<div class="input-group">
@@ -23,6 +23,7 @@
 			</div>
 			<div class="col-xs-12  col-md-8">
 				<player tracks.bind="tracks"></player>
+				<pagination if.bind="queryInfo" info.bind="queryInfo" change.delegate="changePage($event)"></pagination>
 			</div>
 		</div>
 	</div>

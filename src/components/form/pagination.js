@@ -53,7 +53,7 @@ export class Pagination {
                 ellipsis
                 boundaryLinks
                 items={totalPage}
-                maxButtons={5}
+                maxButtons={10}
                 activePage={this.info.page}
                 onSelect={this.handlePageChange} />,
             this.element

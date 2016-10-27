@@ -20,10 +20,21 @@ export class Index {
     }
 
     loadTracks() {
+        var keyword = this.queryInfo.keyword;
+        var filter = this.queryInfo.filter;
         this.service.search(this.queryInfo)
             .then(result => {
                 this.tracks = result.data;
+                this.queryInfo = result.info;
+                this.queryInfo.keyword = keyword;
+                this.queryInfo.filter = filter;
             })
+    }
+    changePage(e)
+    {
+        var page = e.detail;
+        this.queryInfo.page = page;
+        this.loadTracks();
     }
 
     setArtist(artist) {

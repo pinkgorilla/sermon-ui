@@ -18,7 +18,7 @@
 
 				<!-- List group -->
 				<div class="list-group" if.bind="tracks.length > 0">
-					<a repeat.for="track of tracks" class="list-group-item" click.delegate="play(track)">
+					<a repeat.for="track of tracks" class="list-group-item" click.delegate="play(track)" style="cursor:pointer;">
 						<div style="width:80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${($index+1) + '. ' + track.artist +' - '+ track.title}</div>
 						<div class="text-right" style="position:absolute; right:5px; top:25%; width:15%;">${track.duration | durationFormat}</div>
 					</a>
