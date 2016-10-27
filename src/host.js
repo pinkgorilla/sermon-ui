@@ -1,3 +1,3 @@
 module.exports = {
-    api: "https://sermon-api-dev.herokuapp.com" 
+    api: "https://sermon-api.herokuapp.com" 
 }
