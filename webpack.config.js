@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || 'devel
 let config;
 
 // basic configuration:
-const title = 'Aurelia Navigation Skeleton';
+const title = 'setia.one';
 const baseUrl = '/';
 const rootDir = path.resolve();
 const srcDir = path.resolve('src');
@@ -63,6 +63,19 @@ const baseConfig = {
   },
   output: {
     path: outDir,
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'react']
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   }
 }
 

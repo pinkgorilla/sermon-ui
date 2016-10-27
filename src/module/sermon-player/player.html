@@ -1,0 +1,30 @@
+<template>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<div class="pull-left" style="width:70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${currentTrack.artist +' - '+ currentTrack.title}</div>
+					<div class="pull-right text-right" style="width:30%;">${state}</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="panel-body">
+					<p>
+						<audio style="width:100%;" controls id="audio-player">
+							<source repeat.for="track of tracks" src.bind='track.uri' />
+						</audio>
+					</p>
+				</div>
+
+				<!-- List group -->
+				<div class="list-group" if.bind="tracks.length > 0">
+					<a repeat.for="track of tracks" class="list-group-item" click.delegate="play(track)">
+						<div style="width:80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">${($index+1) + '. ' + track.artist +' - '+ track.title}</div>
+						<div class="text-right" style="position:absolute; right:5px; top:25%; width:15%;">${track.duration | durationFormat}</div>
+					</a>
+				</div>
+			</div>
+			<div class="alert alert-info text-center" role="alert" if.bind="tracks.length < 1">We are sorry, it seems that we can't find what you're looking for</div>
+		</div>
+	</div>
+</template>

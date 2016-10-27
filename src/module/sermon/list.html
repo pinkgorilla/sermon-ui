@@ -1,0 +1,47 @@
+<template>
+	<h1 class="page-header">Sermons</h1>
+	<br>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="input-group">
+				<input type="text" class="form-control" name="keyword" value.bind="info.keyword" placeholder="Search" />
+				<span class="input-group-btn">
+                        <button class="btn btn-default" click.delegate="load()"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-default" click.delegate="reset()"> Show all </button>    
+                    </span>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="pull-right">
+				<button class="btn btn-primary" click.delegate="create()">New</button>
+			</div>
+		</div>
+	</div>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Artist</th>
+				<th>Title</th>
+				<th>Duration</th>
+				<th>Year</th>
+				<th>Month</th>
+				<th>Uri</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr repeat.for="item of data" click.delegate="view(item)">
+				<td>${item.artist}</td>
+				<td>${item.title}</td>
+				<td>${item.duration |durationFormat}</td>
+				<td>${item.year}</td>
+				<td>${item.month}</td>
+				<td>${item.uri}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+		No data found.
+	</div>
+	<hr/>
+	<pagination if.bind="info" info.bind="info" change.delegate="loadPage($event)"></pagination>
+</template>
