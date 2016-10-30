@@ -1,18 +1,23 @@
-import { inject } from 'aurelia-framework';
+import { inject, bindable, bindingMode } from 'aurelia-framework';
 import { Player } from './player';
 import { Service } from './service';
 
 @inject(Element, Service)
 export class Index {
-    queryInfo = { filter: {} };
+    queryInfo = { filter: { duration: 30 } };
     artists = [{ label: 'All', value: null }, { label: 'Ps.Jeffrey', value: 'Jeffrey Rachmat' }, { label: 'Ps. Jose', value: 'Jose Carol' }, { label: 'Other', value: { '$regex': "^(?!.*(Jeffrey Rachmat|Jose Carol)).*$" } }]
+
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) duration;
     tracks = [];
     filteredTracks = [];
+    sliderOptions = { min: 0, max: 10000, step: 60 };
 
     constructor(element, service) {
         this.element = element;
         this.service = service;
+
         this.artist = '*';
+        this.duration = 30;
     }
 
     attached() {
@@ -30,8 +35,7 @@ export class Index {
                 this.queryInfo.filter = filter;
             })
     }
-    changePage(e)
-    {
+    changePage(e) {
         var page = e.detail;
         this.queryInfo.page = page;
         this.loadTracks();
@@ -43,22 +47,14 @@ export class Index {
             this.queryInfo.filter.artist = artist;
         else
             delete this.queryInfo.filter.artist;
-        // console.log(this.queryInfo);
-        // this.artist = artist;
-        // var other = '';
-        // if (this.artist == '!') {
-        //     var otherArtist = this.artists.filter(a => a.value != '*' && a.value != '!');
-        //     other = otherArtist.map((item, index, array) => { return item.value.toLowerCase() }).join('-');
-        // }
-        // this.filteredTracks = this.tracks.filter(track => {
-        //     if (this.artist == '*')
-        //         return true;
-        //     else if (this.artist == '!') {
-        //         return other.toLowerCase().indexOf(track.artist.toLowerCase()) < 0;
-        //     }
-        //     else
-        //         return track.artist.toLowerCase().indexOf(artist.toLowerCase()) > -1;
-        // })
+    }
+
+    durationChanged(newValue) {
+        this.setDuration();
+    }
+    setDuration() {
+        this.queryInfo.filter = this.queryInfo.filter || {};
+        this.queryInfo.filter.duration = { '$lte': this.duration * 60 };
     }
 }
 
