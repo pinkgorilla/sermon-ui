@@ -4,7 +4,7 @@ import { Service } from './service';
 
 @inject(Element, Service)
 export class Index {
-    queryInfo = { filter: { duration: 30 } };
+    queryInfo = { filter: { duration: 60 } };
     artists = [{ label: 'All', value: null }, { label: 'Ps.Jeffrey', value: 'Jeffrey Rachmat' }, { label: 'Ps. Jose', value: 'Jose Carol' }, { label: 'Other', value: { '$regex': "^(?!.*(Jeffrey Rachmat|Jose Carol)).*$" } }]
 
     @bindable({ defaultBindingMode: bindingMode.twoWay }) duration;
@@ -17,7 +17,7 @@ export class Index {
         this.service = service;
 
         this.artist = '*';
-        this.duration = 30;
+        this.duration = 60;
     }
 
     attached() {
