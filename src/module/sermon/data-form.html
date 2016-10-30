@@ -3,7 +3,9 @@
 		<textbox label="ID" value.bind="data._id" error.bind="error._id" read-only.bind="true"></textbox>
 		<textbox label="Artist" value.bind="data.artist" error.bind="error.artist" read-only.bind="readOnly"></textbox>
 		<textbox label="Title" value.bind="data.title" error.bind="error.title" read-only.bind="readOnly "></textbox>
-		<numeric label="Duration" value.bind="data.duration" error.bind="error.duration" read-only.bind="readOnly"></numeric>
+		<numeric label="Minute" value.bind="data.minute" error.bind="error.minute" read-only.bind="readOnly"></numeric>
+		<numeric label="Second" value.bind="data.second" error.bind="error.second" read-only.bind="readOnly"></numeric>
+		<numeric label="Duration" value.bind="totalDuration" error.bind="error.duration" read-only.bind="true"></numeric>
 		<numeric label="Month" value.bind="data.month" error.bind="error.month" read-only.bind="readOnly"></numeric>
 		<numeric label="Year" value.bind="data.year" error.bind="error.year" read-only.bind="readOnly"></numeric>
 		<multiline label="Description" value.bind="data.description" error.bind="error.description" read-only.bind="readOnly"></multiline>

@@ -13,6 +13,12 @@ export class DataForm {
         return (this.data._id || '').toString() != '';
     }
 
+    @computedFrom("data.minute", "data.second")
+    get totalDuration() {
+        this.data.duration = this.data.minute * 60 + this.data.second;
+        return this.data.duration;
+    }
+
     activate() {
     }
 

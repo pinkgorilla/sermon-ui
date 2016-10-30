@@ -18,6 +18,15 @@
 					</div>
 				</div>
 				<br/>
+				<div class="row">
+					<label for="filter_range" class="col-sm-2 control-label">Duration</label>
+					<div class="col-sm-8">
+						<input type="range" id="filter_range" class="form-control" value.bind="duration" min="5" max="120" step="1" input.bind="setDuration()"
+						/>
+					</div>
+					<div class="col-sm-2">${duration} mins</div>
+				</div>
+				<br/>
 				<button type="button" class="btn btn-primary btn-block" click.delegate="loadTracks()">go</button>
 
 			</div>
@@ -27,4 +36,5 @@
 			</div>
 		</div>
 	</div>
+	<slider value.bind="data.duration" options.bind="sliderOptions"></slider>
 </template>
